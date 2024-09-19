@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Historia Más Bonita</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla de Bienvenida -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-container">
+            <h1>¿Quieres ser mi novia?</h1>
+            <p>Para continuar, seleccione "Sí".</p>
+            <div class="button-container">
+                <button id="yes-button" class="btn-yes" onclick="proceed()">Sí</button>
+                <button id="no-button" class="btn-no" onmouseover="moveNoButton()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div id="main-content" style="display:none;">
+        <header>
+            <div class="container">
+                <h1>La Historia Más Bonita</h1>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <section class="story">
+                    <div class="story-block">
+                        <div class="audio-text">
+                            <button onclick="playAudio('audio1')" class="play-button">▶</button>
+                            <audio id="audio1" src="audio/song1.mp3"></audio>
+                            <p>Cuando lo que Dios hace no tiene sentido. Todos hemos estado en ese punto donde la vida pareciera llegar a su final, donde los sueños mueren...</p>
+                        </div>
+                        <div class="photo">
+                            <img src="fotos/foto1.jpg" alt="Foto relacionada">
+                        </div>
+                    </div>
+
+                    <div class="story-block">
+                        <div class="audio-text">
+                            <button onclick="playAudio('audio2')" class="play-button">▶</button>
+                            <audio id="audio2" src="audio/song2.mp3"></audio>
+                            <p>El sentimiento de abandono es necesario experimentarlo para aprender a reconocer el abrazo suave y delicado del Señor...</p>
+                        </div>
+                        <div class="photo">
+                            <img src="fotos/foto2.jpg" alt="Foto relacionada">
+                        </div>
+                    </div>
+                    <!-- Puedes seguir añadiendo más bloques como estos -->
+                </section>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <p>© 2024 La Historia Más Bonita</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function proceed() {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        function moveNoButton() {
+            var button = document.getElementById('no-button');
+            var x = Math.floor(Math.random() * 300) + 50;
+            var y = Math.floor(Math.random() * 100) + 50;
+            button.style.position = "absolute";
+            button.style.top = y + "px";
+            button.style.left = x + "px";
+        }
+
+        function playAudio(audioId) {
+            var audio = document.getElementById(audioId);
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
